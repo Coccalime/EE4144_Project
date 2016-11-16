@@ -1,0 +1,38 @@
+/*
+ * Name: EE4144 Term Project 
+ * Authors:
+ * Description: Using a servo, IR distance sensor and photo diodes are goal is to balance a billiard ball at the center of a metal rod.
+ */
+  
+//Include any needed libraries here.
+
+//Using C, we want to put our pointers that hold the register addresses here, as global variables so we can access them throughout our code.
+
+//Function prototypes.
+void initialize_interupt_registers();
+
+
+void setup() {
+  //Using C initialize appropriate registers using specific functions. i.e.
+  initialize_interupt_registers();
+  
+}
+
+void loop() {
+
+  //PID Controller.
+  //Recieves inputs from IR sensor or photodiode. Outputs a signal to servo for angle adjustment.
+
+
+  //Function that returns a floating point distance value from IR sensor. 
+ 
+
+  //Function that returns position of ball from the photodiodes (pre-measured values from a ruler). Accomplished by determining which diode is currently activated. i.e. The one that is 5cm to the left of the center. 
+  //Recomend to use polling instead of interupts to check all 10 sensors. 
+  
+
+  //Function that controls the position of the servo motor. 
+  
+}
+
+void initialize_interupt_registers() {}
