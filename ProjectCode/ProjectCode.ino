@@ -10,6 +10,10 @@
 
 #define dt .004   //seconds         //250Hz or 4ms refresh rate ensures dt is a contant 4ms 
 #define rod_center 25               //25 cm
+//------------------------------------------IRsensor-------------------------------------
+#define sensorIR 5               //Must be an analog pin
+float sensorValue, inches, cm;    //Must be of type float for pow()
+//------------------------------------------PID-----------------------------------
 int pid_setpoint, IRsensor_input;   
 double timer;                       //Refresh timer
 float pid_p_gain = 0;               //Gain setting for the P-controller 
@@ -22,7 +26,7 @@ float pid_output, pid_last_d_error, pid_i, pid_d;
 
 //Function prototypes.
 void initialize_interupt_registers();
-int getIRsensor_input();
+float getIRsensor_input();
 void moveServo(float pid_output);
 
 
@@ -30,7 +34,7 @@ void moveServo(float pid_output);
 void setup() {
   //Using C initialize appropriate registers using specific functions. i.e.
   initialize_interupt_registers();
-  
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -72,6 +76,18 @@ void initialize_interupt_registers() {}
 
 void moveServo(float pid_output) {}
 
-int getIRsensor_input() {}
+float getIRsensor_input() {
+
+  sensorValue = analogRead(sensorIR);
+  inches = 4192.936 * pow(sensorValue,-0.935) - 3.937;
+  //cm = 10650.08 * pow(sensorValue,-0.935) - 10;
+  delay(100);
+  Serial.print("Inches: ");
+  Serial.println(inches);
+}
+  
+
+
+
 
 
